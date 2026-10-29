@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#1b365d" />
+    <title>Rekap Kas - Portal Kelas</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Roboto:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body class="kas-page">
+    <header>
+      <div class="container nav-container">
+        <a href="index.html" class="logo">
+          <i class="fa-solid fa-code"></i> Kelas 1IKRA
+        </a>
+        <button
+          class="mobile-menu-btn"
+          id="mobileMenuBtn"
+          aria-label="Toggle Navigation"
+        >
+          <i class="fa-solid fa-bars"></i>
+        </button>
+        <nav aria-label="Navigasi utama">
+          <ul class="nav-links" id="navLinks">
+            <li><a href="index.html">Beranda</a></li>
+            <li><a href="#ringkasan" class="active">Ringkasan Kas</a></li>
+            <li><a href="#rekap-kas">Rekap Kas</a></li>
+            <li><a href="#tukang-nunggak">Tukang Nunggak</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <section class="hero kas-hero" id="ringkasan">
+      <div class="container">
+        <h1>Ringkasan Kas Kelas</h1>
+        <p>Pantau pemasukan, pengeluaran, saldo, dan tunggakan kas secara teratur.</p>
+        <div class="hero-buttons">
+          <a href="#rekap-kas" class="btn btn-primary">
+            <i class="fa-solid fa-table-list"></i> Lihat Rekap
+          </a>
+          <a href="#tukang-nunggak" class="btn btn-outline">
+            <i class="fa-solid fa-user-clock"></i> Lihat Tunggakan
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section kas-summary-section">
+      <div class="container">
+        <h2 class="section-title">Ringkasan Keuangan</h2>
+        <div class="grid-3">
+          <article class="card summary-card">
+            <div class="card-icon"><i class="fa-solid fa-arrow-trend-up"></i></div>
+            <span class="tag tag-info">Pemasukan</span>
+            <h3 id="total-pemasukan">Memuat...</h3>
+            <p>Akumulasi pemasukan kas saat ini.</p>
+          </article>
+          <article class="card summary-card">
+            <div class="card-icon"><i class="fa-solid fa-arrow-trend-down"></i></div>
+            <span class="tag tag-urgent">Pengeluaran</span>
+            <h3 id="total-pengeluaran">Memuat...</h3>
+            <p>Akumulasi pengeluaran kas saat ini.</p>
+          </article>
+          <article class="card summary-card balance-card">
+            <div class="card-icon"><i class="fa-solid fa-wallet"></i></div>
+            <span class="tag tag-info">Saldo</span>
+            <h3 id="saldo">Memuat...</h3>
+            <p>Sisa kas setelah pengeluaran.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-alt" id="rekap-kas">
+      <div class="container">
+        <h2 class="section-title">Rekap Kas</h2>
+        <div class="table-container kas-table-container">
+          <table class="schedule-table kas-table">
+            <thead>
+              <tr>
+                <th>Tanggal</th>
+                <th>Keterangan</th>
+                <th>Pemasukan</th>
+                <th>Pengeluaran</th>
+                <th>Saldo</th>
+              </tr>
+            </thead>
+            <tbody id="rekap-table-body"></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="tukang-nunggak">
+      <div class="container">
+        <h2 class="section-title">Tukang Nunggak</h2>
+        <div class="table-container kas-table-container">
+          <table class="schedule-table kas-table">
+            <thead>
+              <tr>
+                <th>Nama</th>
+                <th>Jumlah Tunggakan</th>
+                <th>Bulan</th>
+                <th>Minggu</th>
+              </tr>
+            </thead>
+            <tbody id="nunggak-table-body"></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="container footer-content">
+        <p>&copy; 2026 Kelas Ilmu Komputer. Dikelola oleh Pengurus Kelas.</p>
+        <div class="social-links">
+          <a href="index.html" aria-label="Kembali ke portal kelas">
+            <i class="fa-solid fa-house"></i>
+          </a>
+        </div>
+      </div>
+    </footer>
+    <script src="app.js" defer></script>
+  </body>
+</html>

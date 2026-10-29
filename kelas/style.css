@@ -1,0 +1,524 @@
+/* ==========================================
+   1. VARIABEL WARNA & FONT
+   ========================================== */
+:root {
+    --bg-navy: #1B365D;       /* Biru Navy (Header & Identitas) */
+    --accent-blue: #4A90E2;   /* Biru Muda (Tombol / Link) */
+    --bg-light: #F8F9FA;      /* Abu-abu/Putih (Latar Belakang) */
+    --text-dark: #212529;     /* Teks Utama */
+    --white: #FFFFFF;
+    --border-color: #E2E8F0;
+    --tag-urgent-bg: #FFEBEB;
+    --tag-urgent-color: #E53E3E;
+    
+    --font-heading: 'Poppins', sans-serif;
+    --font-body: 'Roboto', sans-serif;
+}
+
+/* ==========================================
+   2. RESET & STILISASI DASAR
+   ========================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-body);
+    background-color: var(--bg-light);
+    color: var(--text-dark);
+    line-height: 1.6;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+    color: var(--bg-navy);
+}
+
+a {
+    text-decoration: none;
+    color: var(--accent-blue);
+    transition: all 0.3s ease;
+}
+
+a:hover {
+    opacity: 0.85;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.section {
+    padding: 88px 0;
+    scroll-margin-top: 70px;
+}
+
+.section-alt {
+    background-color: var(--white);
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 40px;
+    font-size: 2rem;
+    position: relative;
+}
+
+.section-title::after {
+    content: '';
+    width: 60px;
+    height: 4px;
+    background-color: var(--accent-blue);
+    display: block;
+    margin: 8px auto 0 auto;
+    border-radius: 2px;
+}
+
+/* ==========================================
+   3. HEADER & NAVIGASI
+   ========================================== */
+header {
+    background-color: var(--bg-navy);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 70px;
+}
+
+.logo {
+    font-family: var(--font-heading);
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--white);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 24px;
+}
+
+.nav-links a {
+    color: rgba(255, 255, 255, 0.85);
+    font-weight: 500;
+    font-size: 0.95rem;
+    padding: 6px 0;
+    position: relative;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+    color: var(--white);
+}
+
+.nav-links a.active::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: var(--accent-blue);
+}
+
+.mobile-menu-btn {
+    display: none;
+    background: none;
+    border: none;
+    color: var(--white);
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+/* ==========================================
+   4. HERO SECTION
+   ========================================== */
+.hero {
+    background: linear-gradient(135deg, var(--bg-navy) 0%, #0F203C 100%);
+    color: var(--white);
+    padding: 90px 0 100px 0;
+    text-align: center;
+}
+
+.hero-badge {
+    background-color: rgba(74, 144, 226, 0.15);
+    color: var(--accent-blue);
+    border: 1px solid var(--accent-blue);
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    display: inline-block;
+    margin-bottom: 20px;
+}
+
+.hero h1 {
+    color: var(--white);
+    font-size: 2.6rem;
+    margin-bottom: 16px;
+    line-height: 1.2;
+}
+
+.hero p {
+    font-size: 1.1rem;
+    color: #CBD5E1;
+    max-width: 680px;
+    margin: 0 auto 32px auto;
+}
+
+.hero-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+.btn {
+    padding: 12px 26px;
+    border-radius: 6px;
+    font-weight: 500;
+    font-size: 0.95rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-primary {
+    background-color: var(--accent-blue);
+    color: var(--white);
+}
+
+.btn-primary:hover {
+    background-color: #357ABD;
+    color: var(--white);
+}
+
+.btn-outline {
+    background-color: transparent;
+    color: var(--white);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.btn-outline:hover {
+    border-color: var(--white);
+    background-color: rgba(255, 255, 255, 0.05);
+    color: var(--white);
+}
+
+/* ==========================================
+   5. CARDS & GRID
+   ========================================== */
+.grid-3 {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 28px;
+}
+
+.card {
+    background-color: var(--white);
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    padding: 30px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.section > .container > *:not(.section-title) {
+    animation: section-entry 0.7s ease both;
+}
+
+.reveal {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.reveal.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.06);
+}
+
+.card-icon {
+    font-size: 1.8rem;
+    color: var(--accent-blue);
+    margin-bottom: 16px;
+}
+
+.tag {
+    align-self: flex-start;
+    padding: 4px 10px;
+    font-size: 0.75rem;
+    border-radius: 4px;
+    font-weight: 700;
+    margin-bottom: 12px;
+}
+
+.tag-info {
+    background-color: #EBF8FF;
+    color: var(--accent-blue);
+}
+
+.tag-urgent {
+    background-color: var(--tag-urgent-bg);
+    color: var(--tag-urgent-color);
+}
+
+.card h3 {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+}
+
+.card p {
+    font-size: 0.95rem;
+    color: #4A5568;
+    margin-bottom: 20px;
+    flex-grow: 1;
+}
+
+.card-date {
+    color: #A0AEC0;
+    font-size: 0.8rem;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+/* Resource Cards */
+.resource-card {
+    text-align: center;
+    align-items: center;
+}
+
+.resource-icon {
+    font-size: 2.5rem;
+    color: var(--bg-navy);
+    margin-bottom: 16px;
+}
+
+.link-btn {
+    font-weight: 500;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+/* ==========================================
+   6. TABEL JADWAL
+   ========================================== */
+.table-container {
+    overflow-x: auto;
+    background-color: var(--white);
+    border-radius: 10px;
+    border: 1px solid var(--border-color);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02);
+    margin-top: 8px;
+}
+
+.schedule-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+}
+
+.schedule-table th {
+    background-color: var(--bg-navy);
+    color: var(--white);
+    font-family: var(--font-heading);
+    padding: 14px 20px;
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.schedule-table td {
+    padding: 14px 20px;
+    border-bottom: 1px solid var(--border-color);
+    font-size: 0.95rem;
+}
+
+.schedule-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.schedule-table tbody tr:hover {
+    background-color: #F1F5F9;
+}
+
+/* ==========================================
+   7. FOOTER
+   ========================================== */
+footer {
+    background-color: var(--bg-navy);
+    color: var(--white);
+    padding: 38px 0;
+    margin-top: 24px;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+.social-links {
+    display: flex;
+    gap: 16px;
+}
+
+.social-links a {
+    color: var(--white);
+    font-size: 1.2rem;
+    opacity: 0.8;
+}
+
+.social-links a:hover {
+    color: var(--accent-blue);
+    opacity: 1;
+}
+
+/* ==========================================
+   8. RESPONSIVE DESIGN
+   ========================================== */
+@media (max-width: 768px) {
+    .mobile-menu-btn {
+        display: block;
+    }
+
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        background-color: var(--bg-navy);
+        padding: 20px;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    }
+
+    .nav-links.show {
+        display: flex;
+    }
+
+    .hero h1 {
+        font-size: 2rem;
+    }
+
+    .section {
+        padding: 64px 0;
+    }
+
+    .footer-content {
+        flex-direction: column;
+        text-align: center;
+    }
+}
+
+@keyframes section-entry {
+    from {
+        opacity: 0;
+        transform: translateY(18px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+    }
+
+    .reveal {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+.kas-hero {
+    padding-bottom: 82px;
+}
+
+.kas-summary-section {
+    padding-top: 72px;
+}
+
+.summary-card h3 {
+    margin-bottom: 10px;
+    font-size: 1.35rem;
+    overflow-wrap: anywhere;
+}
+
+.summary-card p {
+    margin-bottom: 0;
+}
+
+.balance-card {
+    background: linear-gradient(135deg, var(--bg-navy) 0%, #0f203c 100%);
+}
+
+.balance-card h3,
+.balance-card p {
+    color: var(--white);
+}
+
+.kas-table-container {
+    margin-top: 0;
+}
+
+.kas-table {
+    min-width: 680px;
+}
+
+.kas-table td {
+    color: var(--text-dark);
+}
+
+@media (max-width: 768px) {
+    .kas-hero {
+        padding-bottom: 64px;
+    }
+
+    .kas-summary-section {
+        padding-top: 56px;
+    }
+}

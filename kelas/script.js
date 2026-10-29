@@ -119,7 +119,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }).format(nominal);
   }
 
-  async function loadHighestTunggakan() {
+  async function loadTunggakan() {
     const announcementMessage = document.getElementById(
       "tunggakan-announcement-message",
     );
@@ -143,28 +143,36 @@ document.addEventListener("DOMContentLoaded", () => {
         throw new Error("Data tunggakan tidak berisi baris yang lengkap.");
       }
 
-      const highestTunggakan = rows.reduce(
-        (highest, cells) => {
-          const nominal = parseNominal(cells[1]);
-          return nominal > highest.nominal
-            ? { name: cells[0], nominal }
-            : highest;
-        },
-        { name: "", nominal: -1 },
+      const tunggakan = rows
+        .map((cells) => ({
+          name: cells[0],
+          nominal: parseNominal(cells[1]),
+        }))
+        .sort((first, second) => second.nominal - first.nominal);
+      const highestNominal = tunggakan[0].nominal;
+      const highestTunggakan = tunggakan.filter(
+        ({ nominal }) => nominal === highestNominal,
       );
 
-      announcementMessage.textContent =
-        `Tunggakan terbesar saat ini adalah ${highestTunggakan.name} ` +
-        `sebesar ${formatRupiah(highestTunggakan.nominal)}.`;
+      const fragment = document.createDocumentFragment();
+      highestTunggakan.forEach(({ name, nominal }) => {
+        const item = document.createElement("li");
+        item.textContent = `${name}: ${formatRupiah(nominal)}`;
+        fragment.append(item);
+      });
+      announcementMessage.replaceChildren(fragment);
     } catch (error) {
       console.error("Gagal memuat pengumuman tunggakan:", error);
-      announcementMessage.textContent =
-        "Informasi tunggakan terbesar gagal dimuat. Silakan lihat daftar lengkap.";
+      announcementMessage.replaceChildren(
+        document.createTextNode(
+          "Daftar tunggakan gagal dimuat. Silakan lihat daftar lengkap.",
+        ),
+      );
     }
   }
 
   loadSchedule();
-  loadHighestTunggakan();
+  loadTunggakan();
 
   // 1. Toggle Mobile Menu
   const mobileMenuBtn = document.getElementById("mobileMenuBtn");

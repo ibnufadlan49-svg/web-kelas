@@ -302,6 +302,18 @@ header {
     flex-grow: 1;
 }
 
+.tunggakan-list {
+    color: #4A5568;
+    font-size: 0.95rem;
+    line-height: 1.7;
+    margin: 0 0 20px;
+    padding-left: 20px;
+}
+
+.tunggakan-list li::marker {
+    color: var(--tag-urgent-color);
+}
+
 .card-date {
     color: #A0AEC0;
     font-size: 0.8rem;
